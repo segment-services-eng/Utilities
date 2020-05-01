@@ -10,7 +10,7 @@ let event = {};
 let writekey
 
 
-let sendBackToSegment = async (endpoint, writekey, event) => {
+let sendToSegment = async (endpoint, writekey, event) => {
     let res = await fetch(endpoint.toString(), {
         body: JSON.stringify(event),
         headers: new Headers({
@@ -29,4 +29,4 @@ let sendBackToSegment = async (endpoint, writekey, event) => {
     }
 };
 
-return await sendBackToSegment(exampleEndpoint, writekey, event);
+return await sendToSegment(exampleEndpoint, writekey, event);
