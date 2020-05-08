@@ -6,7 +6,7 @@ const generate_jwt = function (request_body, request_uri, query_string) {
         request_body_string +
         '|' +
         query_string.toString();
-    console.log(request_data);
+    
     let hash = crypto.createHash('sha1');
     let request_hash = hash.update(request_data).digest('hex');
 
@@ -14,6 +14,7 @@ const generate_jwt = function (request_body, request_uri, query_string) {
         alg: 'HS256'
     };
 
+    // this body assumes there is a required expiration attribute, in order to satisfy requirements for a specific API. the 'exp' attribute may be removed if not needed.
     const jwtBody = {
         'request-hash': request_hash,
         exp: Date.now() + 600000
